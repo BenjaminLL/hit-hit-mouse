@@ -13,9 +13,8 @@ body {
 
 .container {
     max-width: 500px;
-    width: 90%;
     height: 100%;
-    margin: 5% auto;
+    margin: 8% auto;
 }
 
 .game-top {
@@ -24,7 +23,11 @@ body {
     height: 90px;
 }
 .game-top p {
-    margin: 5px;
+    margin: 2%;
+}
+
+#game-score {
+    padding-right: 10%;
 }
 
 .game-content {
@@ -83,7 +86,7 @@ body {
 
 @media screen and (max-width: 500px) {
     .container {
-        width: 290px;
+        width: 90%;
     }
     .game-content ul {
         padding: 0;
