@@ -20,7 +20,7 @@ body {
 .game-top {
     padding-top: 10px;
     width: 100%;
-    height: 90px;
+    height: 20%;
 }
 .game-top p {
     margin: 2%;
@@ -30,21 +30,31 @@ body {
     padding-right: 10%;
 }
 
-.game-content {
-    overflow: auto;
+.definition {
+    padding-top: 20%;
     width: 100%;
-    border-top: 1px solid #ddd;
+    height: 20%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: white;
+}
+
+.game-content {
+    width: 100%;
+    height: 40%;
 }
 
 .game-content ul {
     list-style: none;
+    padding-left: 0px;
+    margin-top: 10%;
+    height: 100%;
 }
 .game-content li {
     float: left;
-    margin-top: 50px;
-    margin-left: 30px;
-    width: 100px;
-    height: 50px;
+    margin: 1.66%;
+    width: 30%;
+    height: 30%;
     border-radius: 50%;
     background-color: #67d0b4;
     box-shadow: 0 0 50px #706565 inset;
@@ -91,10 +101,10 @@ body {
     .game-content ul {
         padding: 0;
     }
-    .game-content li {
+/*    .game-content li {
         margin-left: 5px;
         width: 90px;
-    }
+    }*/
     .game-content div {
         margin-left: 20px;
     }
