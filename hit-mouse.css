@@ -31,6 +31,7 @@ body {
 }
 
 .definition {
+    margin-top: 20%;
     padding-top: 20%;
     width: 100%;
     height: 20%;
@@ -54,7 +55,7 @@ body {
     float: left;
     margin: 1.66%;
     width: 30%;
-    height: 30%;
+    height: 40%;
     border-radius: 50%;
     background-color: #67d0b4;
     box-shadow: 0 0 50px #706565 inset;
