@@ -31,31 +31,32 @@ body {
 }
 
 .definition {
-    margin-top: 20%;
-    padding-top: 20%;
+    margin-top: 74px;
     width: 100%;
-    height: 20%;
+    height: 80px;
     border-width: 1px;
     border-style: solid;
     border-color: white;
+    padding-right: 1px;
+    padding-left: 1px;
 }
 
 .game-content {
     width: 100%;
-    height: 40%;
+    height: 60%;
 }
 
 .game-content ul {
     list-style: none;
     padding-left: 0px;
-    margin-top: 10%;
+    margin-top: 15px;
     height: 100%;
 }
 .game-content li {
     float: left;
     margin: 1.66%;
     width: 30%;
-    height: 40%;
+    height: 90px;
     border-radius: 50%;
     background-color: #67d0b4;
     box-shadow: 0 0 50px #706565 inset;
@@ -66,34 +67,18 @@ body {
 
 .game-content div {
     position: relative;
-    margin-top: -15px;
-    margin-left: 25px;
-    width: 50px;
-    height: 70px;
-    border-radius: 50%/40%;
-    background-color: #dfb25d;
-    opacity: 0;
+    display: none;
 }
 
-.game-content div.good {
-    background-color: #dfb25d;
-}
-.game-content div.good[clicked="1"]::after {
-    content: "✓";
-    line-height: 70px;
-    font-size: 40px;
-    color: #0ad845;
+li {
+    position: relative;
 }
 
-.game-content div.bad {
-    background-color: #a48f5c;
+li div {
+    position: absolute;
+    top: 35%;
 }
-.game-content div.bad[clicked="1"]::after {
-    content: "✕";
-    line-height: 70px;
-    font-size: 40px;
-    color: #db1536;
-}
+
 
 @media screen and (max-width: 500px) {
     .container {
@@ -102,37 +87,16 @@ body {
     .game-content ul {
         padding: 0;
     }
-/*    .game-content li {
-        margin-left: 5px;
-        width: 90px;
-    }*/
-    .game-content div {
-        margin-left: 20px;
-    }
-}
 
-@-webkit-keyframes mouse-move {
-    50% {
-        margin-top: -40px;
-        opacity: 1;
+    .definition {
+        line-height: 80px;
+        height: 80px;
     }
-    100% {
-        margin-top: -15px;
-        opacity: 0;
-    }
-}
-@keyframes mouse-move {
-    50% {
-        margin-top: -40px;
-        opacity: 1;
-    }
-    100% {
-        margin-top: -15px;
-        opacity: 0;
-    }
-}
 
-.game-content div.active {
-    -webkit-animation: mouse-move 2s ease-in-out infinite;
-        animation: mouse-move 2s ease-in-out infinite;
+    .definition p {
+        line-height: 1.5;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    
 }

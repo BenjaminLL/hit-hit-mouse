@@ -1,6 +1,22 @@
+// global variables
+var timer = null;
+var values = null;
+var index;
+var included = false;
+var correct = false;
+sixValues = ["Honesty", "Trust", "Respect", "Responsibility", "Fairness", "Courage"];
+definitions = ["Fairness and starightforwardness of conduct", 
+                        "Assured reliance on the character, ability, strength, or truth of something",
+                        "An act of giving particular attention; expressions of high or special regard",
+                        "Moral, legal, or mental accountability; the quality or state of being responsible",
+                        "Marked by impartiality and honesty: free from self-interest, prejudice, or favoritism",
+                        "Mental or moral strength to venture, persevere, and withstand danger, fear, or difficulty"];
+
 function MouseGame() {
+
     this.mousesWrap = this.$('.game-content');
     this.mouses = this.$('.game-content div');
+    this.defn = this.$('.definition p');
     this.gameStart = this.$('#game-start');
     this.gameTime = this.$('#game-time');
     this.gameScore = this.$('#game-score');
@@ -48,30 +64,53 @@ MouseGame.prototype = {
         }
     },    
 
-    // 运动操作
-    moveUpAndDown: function() {
+
+    /* set the definition in the white box */
+    setDef: function() {
+        index = this.getRandom(0, 4);
+        this.defn[0].textContent = definitions[index];
+    },
+
+    /* pick values from SixValues */
+    pickValue: function() {
         var that = this;        
 
-        // 定时器随机定义good|bad老鼠个数，以及需要显示的个数
-        that.moveTime = setInterval(function() {            
+        // 定时器随机定义value个数
+        clearInterval(values);
+        values = setInterval(function() {            
+
+            included = false;
 
             for (var i = 0, j = that.mouses.length; i < j; ++i) {
                 that.mouses[i].setAttribute('clicked', '0');
-                that.mouses[i].className = 'good active';
+                that.mouses[i].className = 'active';
                 that.mouses[i].style.display = 'none';
-            }            
+            } 
 
-            // bad 的个数
-            var badNum = that.getRandom(0, 8);
-            for (var i = 0; i < badNum; i++) {
-                that.mouses[that.getRandom(0, 8)].className = 'bad active';
-            }            
+            var numShow = that.getRandom(1, 9);
 
-            // 要显示的个数
-            var showNum = that.getRandom(0, 8);
-            for (var i = 0; i < showNum; i++) {
-                that.mouses[that.getRandom(0, 8)].style.display = 'block';
+            for (var i = 0; i < numShow; i++) {
+                
+                var tmpIndex = that.getRandom(0, 4);
+                // add the correct one
+                if (!included) {
+                    tmpIndex = index;
+                    included = true;
+                }
+
+                // get
+                var posHole = that.getRandom(0, 7);
+                
+                that.mouses[posHole].style.display = 'block';
+                that.mouses[posHole].textContent = sixValues[tmpIndex];
             }
+
+            if (correct) {
+                that.setDef();
+                correct = false;
+            }
+
+
         }, 2000);
     },    
 
@@ -79,7 +118,7 @@ MouseGame.prototype = {
     bindEvent: function() {
         var that = this;        
 
-        // 监听游戏开始/重新开始
+        // start the game
         that.gameStart[0].addEventListener('click', function() {
             that.startGame();
         }, false);        
@@ -94,14 +133,19 @@ MouseGame.prototype = {
                 return;
             }
 
+
+            var valueStr = elem.textContent;
             // 扣分
-            if (elem.className.indexOf('bad') !== -1) {
-                that.score -= that.badScore;
+            if (sixValues.indexOf(valueStr) !== index) {
+                if (that.score >= that.badScore) {
+                    that.score -= that.badScore;
+                }
             }
 
             // 加分
             else {
                 that.score += that.goodScore;
+                correct = true;
             }            
 
             elem.setAttribute('clicked', '1');
@@ -113,18 +157,21 @@ MouseGame.prototype = {
     countDown: function() {
         var that = this;        
 
-        var t = setInterval(function() {
+        clearInterval(timer);
+        timer = setInterval(function() {
             that.text(that.gameTime[0], --that.totalTime);            
 
             if (that.totalTime === 0) {
-                clearInterval(t);
-                clearInterval(that.moveTime);
+                clearInterval(timer);
+                timer = null;
+                clearInterval(values);
                 
                 for (var i = 0, j = that.mouses.length; i < j; ++i) {
                     that.mouses[i].style.display = 'none';
-                }                
+                }
+                that.text(that.defn[0], "");              
 
-                alert('游戏结束，得分为：' + that.score);
+                alert('Game Over，Score：' + that.score);
             }
         }, 1000);
     },    
@@ -136,8 +183,9 @@ MouseGame.prototype = {
         this.text(this.gameTime[0], this.totalTime);
         this.text(this.gameScore[0], this.score);        
 
+        this.setDef();
         this.countDown();
-        this.moveUpAndDown();
+        this.pickValue();
     }
 };
 
