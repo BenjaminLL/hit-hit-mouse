@@ -111,7 +111,7 @@ MouseGame.prototype = {
             }
 
 
-        }, 2000);
+        }, 4000);
     },    
 
     // 打地鼠操作
@@ -171,7 +171,6 @@ MouseGame.prototype = {
                 }
                 that.text(that.defn[0], "");              
 
-                alert('Game Over，Score：' + that.score);
             }
         }, 1000);
     },    

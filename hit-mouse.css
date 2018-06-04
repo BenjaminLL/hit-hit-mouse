@@ -68,6 +68,8 @@ body {
 .game-content div {
     position: relative;
     display: none;
+    -webkit-animation: mouse-move 4s ease-out infinite;
+    animation: mouse-move 4s ease-out infinite;
 }
 
 li {
@@ -82,7 +84,7 @@ li div {
 
 @media screen and (max-width: 500px) {
     .container {
-        width: 90%;
+        width: 95%;
     }
     .game-content ul {
         padding: 0;
@@ -99,4 +101,29 @@ li div {
         vertical-align: middle;
     }
     
+}
+
+@-webkit-keyframes mouse-move {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+@keyframes mouse-move {
+    0% {
+        opacity: 0;
+    }
+
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }
