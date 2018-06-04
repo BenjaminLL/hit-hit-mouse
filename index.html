@@ -7,22 +7,27 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+    <!-- google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Lato|Yanone+Kaffeesatz" rel="stylesheet">
   
-    <title>打地鼠</title>
+    <title>Six Values</title>
     <link rel="stylesheet" type="text/css" href="hit-mouse.css">
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h4>无聊打打地鼠</h4>
+                <h4>SIX VALUES</h4>
 
                 <div class="game-top">
-                    <p><input type="button" value="开始游戏" id="game-start"><p>
-                    <p>Score：<span id="game-score">0</span> Time：<span id="game-time">60</span> s</p>
+                    <button type="button" class="btn btn-light btn-sm" id="game-start">New Game</button>
+                    <!-- <p><input type="button" value="New Game" id="game-start"><p> -->
+                    <p>Score：<span id="game-score">0</span> Time：<span id="game-time">60</span> <span id="second">s</span></p>
+                    <hr>
                 </div>
 
-                <div class="definition"><p><p></div>
+                <div class="definition"><p>Pick the correct value that is mathched to the definition<p></div>
 
                 <div class="game-content">
                     <ul>

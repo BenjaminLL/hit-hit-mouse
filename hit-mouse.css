@@ -4,9 +4,9 @@ html {
 }
 
 body {
-    background: #005AA7;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #FFFDE4, #005AA7);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #FFFDE4, #005AA7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    background: black;
+    color: white;
     margin: 0px;
     min-height: 100%;
 }
@@ -15,6 +15,11 @@ body {
     max-width: 500px;
     height: 100%;
     margin: 8% auto;
+    font-family: 'Lato', sans-serif;
+}
+
+h4 {
+    font-family: 'Abril Fatface', cursive;
 }
 
 .game-top {
@@ -28,22 +33,37 @@ body {
 
 #game-score {
     padding-right: 10%;
+    /* changed */
+    color: rgb(254,215,74);
+}
+
+#game-time {
+    /* changed */
+    color: rgb(254,215,74);
+}
+
+hr {
+    border-top: 1px solid rgb(254,215,74);
+    border-bottom: 1px solid rgba(0,0,0,0.2);
 }
 
 .definition {
-    margin-top: 74px;
-    width: 100%;
+    margin: 1.66%;
+    margin-top: auto;
     height: 80px;
-    border-width: 1px;
+    border-radius: 5%;
+    border-width: 3px;
     border-style: solid;
     border-color: white;
     padding-right: 1px;
     padding-left: 1px;
+/*    box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);*/
 }
 
 .game-content {
     width: 100%;
     height: 60%;
+    font-family: 'Yanone Kaffeesatz', sans-serif;
 }
 
 .game-content ul {
@@ -57,9 +77,11 @@ body {
     margin: 1.66%;
     width: 30%;
     height: 90px;
-    border-radius: 50%;
-    background-color: #67d0b4;
-    box-shadow: 0 0 50px #706565 inset;
+    border-radius: 25%;
+/*    background-color: #bce2e5;
+    box-shadow: 0 0 50px #889091 inset;*/
+    /*background-color: black;*/
+    border: 5px solid rgb(254,215,74);
 }
 .game-content li:last-child {
     margin-bottom: 50px;
@@ -79,6 +101,7 @@ li {
 li div {
     position: absolute;
     top: 35%;
+    color: white;
 }
 
 
