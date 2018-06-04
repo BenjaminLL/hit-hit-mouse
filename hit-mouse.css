@@ -102,6 +102,11 @@ li div {
     position: absolute;
     top: 35%;
     color: white;
+    cursor: pointer;
+}
+
+li div:hover {
+    color: rgb(254,215,74);
 }
 
 

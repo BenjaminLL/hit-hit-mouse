@@ -169,7 +169,8 @@ MouseGame.prototype = {
                 for (var i = 0, j = that.mouses.length; i < j; ++i) {
                     that.mouses[i].style.display = 'none';
                 }
-                that.text(that.defn[0], "");              
+                that.text(that.defn[0], "Time's Up");
+                that.text(that.gameStart[0], "New Game");               
 
             }
         }, 1000);
@@ -180,7 +181,8 @@ MouseGame.prototype = {
         this.score = 0;
         this.totalTime = 60;
         this.text(this.gameTime[0], this.totalTime);
-        this.text(this.gameScore[0], this.score);        
+        this.text(this.gameScore[0], this.score); 
+        this.text(this.gameStart[0], "Restart");       
 
         this.setDef();
         this.countDown();
