@@ -85,6 +85,7 @@ MouseGame.prototype = {
                 that.mouses[i].setAttribute('clicked', '0');
                 that.mouses[i].className = 'active';
                 that.mouses[i].style.display = 'none';
+                that.mouses[i].style.color = "white";
             } 
 
             var numShow = that.getRandom(1, 9);
@@ -140,12 +141,14 @@ MouseGame.prototype = {
                 if (that.score >= that.badScore) {
                     that.score -= that.badScore;
                 }
+                elem.style.color = "red";
             }
 
             // 加分
             else {
                 that.score += that.goodScore;
                 correct = true;
+                elem.style.color = "rgb(254,215,74)";
             }            
 
             elem.setAttribute('clicked', '1');
