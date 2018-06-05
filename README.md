@@ -1,5 +1,5 @@
 Game: Six Values
 
-Color: University of Waterloo (black, yellow, white)
+Color: University of Waterloo (black, gold, white)
 
 Language: English
