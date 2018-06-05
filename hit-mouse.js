@@ -177,7 +177,15 @@ MouseGame.prototype = {
 
             }
         }, 1000);
-    },    
+    },
+
+    clear: function() {
+        clearInterval(values);
+
+        for (var i = 0, j = this.mouses.length; i < j; ++i) {
+                    this.mouses[i].style.display = 'none';
+        }
+    },
 
     // 开始游戏
     startGame: function() {
@@ -187,6 +195,7 @@ MouseGame.prototype = {
         this.text(this.gameScore[0], this.score); 
         this.text(this.gameStart[0], "Restart");       
 
+        this.clear();
         this.setDef();
         this.countDown();
         this.pickValue();
