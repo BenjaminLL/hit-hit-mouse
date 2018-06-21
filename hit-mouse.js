@@ -23,6 +23,11 @@ body.addEventListener("click", function() {
     instructionPopup.style.display = 'none';
 });
 
+function disablePopup() {
+    backGround.style.display = 'none';
+    instructionPopup.style.display = 'none';
+}
+
 
 
 function MouseGame() {
