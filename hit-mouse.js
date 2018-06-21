@@ -12,6 +12,19 @@ definitions = ["Fairness and starightforwardness of conduct",
                         "Marked by impartiality and honesty: free from self-interest, prejudice, or favoritism",
                         "Mental or moral strength to venture, persevere, and withstand danger, fear, or difficulty"];
 
+
+var body = document.getElementsByTagName("BODY")[0];
+var backGround = document.querySelectorAll("#pop_background")[0];
+var instructionPopup = document.querySelectorAll("#instruction_popup")[0];
+
+body.addEventListener("click", function() {
+
+    backGround.style.display = 'none';
+    instructionPopup.style.display = 'none';
+});
+
+
+
 function MouseGame() {
 
     this.mousesWrap = this.$('.game-content');
@@ -22,9 +35,14 @@ function MouseGame() {
     this.gameScore = this.$('#game-score');
     this.goodScore = 100;
     this.badScore = 50;
+    // this.backGround = this.$("#pop_background");
+    // this.instructionPopup = this.$("#instruction_popup");
 
+    // this.instruction();
     this.bindEvent();
 }
+
+
 
 MouseGame.prototype = {
     constructor: MouseGame,    
@@ -85,7 +103,7 @@ MouseGame.prototype = {
                 that.mouses[i].setAttribute('clicked', '0');
                 that.mouses[i].className = 'active';
                 that.mouses[i].style.display = 'none';
-                that.mouses[i].style.color = "white";
+                that.mouses[i].style.color = "black";
             } 
 
             var numShow = that.getRandom(1, 9);

@@ -1,12 +1,12 @@
 html {
-    min-height: 100%;
+    max-height: 100%;
     width: 100%
 }
 
 body {
 
-    background: black;
-    color: white;
+    background: rgb(249,249,249);
+    color: black;
     margin: 0px;
     min-height: 100%;
 }
@@ -37,6 +37,11 @@ h4 {
     color: rgb(254,215,74);
 }
 
+#game-start {
+    border: 1px solid rgba(0,0,0, 0.2);
+    width: 100%;
+}
+
 #game-time {
     /* changed */
     color: rgb(254,215,74);
@@ -47,8 +52,7 @@ h4 {
 }
 
 hr {
-    border-top: 1px solid rgb(254,215,74);
-    border-bottom: 1px solid rgba(0,0,0,0.2);
+    border-top: 2px solid rgb(254,215,74);
 }
 
 .definition {
@@ -113,9 +117,51 @@ li {
 li div {
     position: absolute;
     top: 35%;
-    color: white;
+    color: black;
     cursor: pointer;
 }
+
+#pop_background {
+    display: block;
+    width: 100%;
+    height: 100%;
+    opacity:.90;
+    background-color: rgb(229,229,229);
+    position: fixed;
+    top: 0px;
+    overflow: auto;
+}
+
+#instruction_popup {
+    display: block;
+    position: absolute;
+    top: 25%;
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+    border:1px solid white;
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    border-radius:10px;
+    background-color: rgb(249,249,249);
+    opacity: 1;
+    color: black;
+}
+
+#instruction_popup p {
+    padding:20px 10px;
+}
+
+#instruction_popup h5 {
+    text-align: center;
+    margin-top: 16px;
+}
+
+#instruction_popup hr {
+    margin: 0;
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
 
 
 @media screen and (max-width: 500px) {
@@ -124,6 +170,13 @@ li div {
     }
     .game-content ul {
         padding: 0;
+    }
+
+    #instruction_popup {
+        top: 5%;
+        width: 90%;
+        margin-left: 5%;
+        margin-right: 5%;
     }
     
 }
