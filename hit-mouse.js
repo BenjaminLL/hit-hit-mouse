@@ -24,7 +24,6 @@ body.addEventListener("click", function() {
 });
 
 function disablePopup() {
-    alert("asd");
     backGround.style.display = 'none';
     instructionPopup.style.display = 'none';
 }
