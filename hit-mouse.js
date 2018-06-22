@@ -2,6 +2,7 @@
 var timer = null;
 var values = null;
 var index;
+var numBox = 9;
 var included = false;
 var correct = false;
 sixValues = ["Honesty", "Trust", "Respect", "Responsibility", "Fairness", "Courage"];
@@ -17,6 +18,7 @@ var body = document.getElementsByTagName("BODY")[0];
 var backGround = document.querySelectorAll("#pop_background")[0];
 var instructionPopup = document.querySelectorAll("#instruction_popup")[0];
 
+/* hide instruction */
 body.addEventListener("click", function() {
 
     backGround.style.display = 'none';
@@ -29,7 +31,7 @@ function disablePopup() {
 }
 
 
-
+/* play the game */
 function MouseGame() {
 
     this.mousesWrap = this.$('.game-content');
@@ -94,6 +96,47 @@ MouseGame.prototype = {
         this.defn[0].textContent = definitions[index];
     },
 
+    setVal: function() {
+
+        var that = this; 
+
+        for (var i = 0, j = that.mouses.length; i < j; ++i) {
+            that.mouses[i].setAttribute('clicked', '0');
+            that.mouses[i].style.display = 'none';
+            that.mouses[i].style.color = "black";
+        } 
+
+        // set the position of the right value
+        var crrPos = [];
+        crrPos[0] = that.getRandom(0, 7);
+        crrPos[1] = that.getRandom(0, 7);
+        while (crrPos[0] == crrPos[1]) {
+            crrPos[1] = that.getRandom(0, 7);
+        }
+
+        for (var i = 0; i < numBox; i++) {
+            
+            var tmpIndex = that.getRandom(0, 4);
+
+            // only two correct values are showed each time
+            if (i == crrPos[0] || i == crrPos[1]) {
+                tmpIndex = index;
+            } else {
+                while (tmpIndex == index) {
+                    tmpIndex = that.getRandom(0, 4);
+                }
+            }
+
+            that.mouses[i].style.display = 'block';
+            that.mouses[i].textContent = sixValues[tmpIndex];
+        }
+
+        if (correct) {
+            that.setDef();
+            correct = false;
+        }
+    },
+
     /* pick values from SixValues */
     pickValue: function() {
         var that = this;        
@@ -102,40 +145,9 @@ MouseGame.prototype = {
         clearInterval(values);
         values = setInterval(function() {            
 
-            included = false;
+            that.setVal();
 
-            for (var i = 0, j = that.mouses.length; i < j; ++i) {
-                that.mouses[i].setAttribute('clicked', '0');
-                that.mouses[i].className = 'active';
-                that.mouses[i].style.display = 'none';
-                that.mouses[i].style.color = "black";
-            } 
-
-            var numShow = that.getRandom(1, 9);
-
-            for (var i = 0; i < numShow; i++) {
-                
-                var tmpIndex = that.getRandom(0, 4);
-                // add the correct one
-                if (!included) {
-                    tmpIndex = index;
-                    included = true;
-                }
-
-                // get
-                var posHole = that.getRandom(0, 7);
-                
-                that.mouses[posHole].style.display = 'block';
-                that.mouses[posHole].textContent = sixValues[tmpIndex];
-            }
-
-            if (correct) {
-                that.setDef();
-                correct = false;
-            }
-
-
-        }, 4000);
+        }, 7000);
     },    
 
     // 打地鼠操作
@@ -187,7 +199,7 @@ MouseGame.prototype = {
         timer = setInterval(function() {
             that.text(that.gameTime[0], --that.totalTime);            
 
-            if (that.totalTime === 0) {
+            if (that.totalTime <= 0) {
                 clearInterval(timer);
                 timer = null;
                 clearInterval(values);
@@ -203,10 +215,14 @@ MouseGame.prototype = {
     },
 
     clear: function() {
-        clearInterval(values);
+        var that = this;
 
-        for (var i = 0, j = this.mouses.length; i < j; ++i) {
-                    this.mouses[i].style.display = 'none';
+        clearInterval(timer);
+        timer = null;
+        clearInterval(values);
+  
+        for (var i = 0, j = that.mouses.length; i < j; ++i) {
+                    that.mouses[i].style.display = 'none';
         }
     },
 
@@ -221,6 +237,7 @@ MouseGame.prototype = {
         this.clear();
         this.setDef();
         this.countDown();
+        this.setVal();
         this.pickValue();
     }
 };
