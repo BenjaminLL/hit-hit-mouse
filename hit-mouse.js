@@ -5,6 +5,7 @@ var index;
 var numBox = 9;
 var included = false;
 var correct = false;
+var finished = true;
 sixValues = ["Honesty", "Trust", "Respect", "Responsibility", "Fairness", "Courage"];
 definitions = ["Fairness and starightforwardness of conduct", 
                         "Assured reliance on the character, ability, strength, or truth of something",
@@ -100,6 +101,11 @@ MouseGame.prototype = {
 
         var that = this; 
 
+        if (correct) {
+            that.setDef();
+            correct = false;
+        }
+
         for (var i = 0, j = that.mouses.length; i < j; ++i) {
             that.mouses[i].setAttribute('clicked', '0');
             that.mouses[i].style.display = 'none';
@@ -130,11 +136,6 @@ MouseGame.prototype = {
             that.mouses[i].style.display = 'block';
             that.mouses[i].textContent = sixValues[tmpIndex];
         }
-
-        if (correct) {
-            that.setDef();
-            correct = false;
-        }
     },
 
     /* pick values from SixValues */
@@ -156,7 +157,12 @@ MouseGame.prototype = {
 
         // start the game
         that.gameStart[0].addEventListener('click', function() {
-            that.startGame();
+
+            if (finished) {
+                that.startGame();
+            } else {
+                that.newGame();
+            }
         }, false);        
 
         // 打地鼠操作
@@ -210,8 +216,25 @@ MouseGame.prototype = {
                 that.text(that.defn[0], "Time's Up");
                 that.text(that.gameStart[0], "New Game");               
 
+                finished = true;
             }
         }, 1000);
+    },
+
+    newGame: function() {
+
+        that = this;
+
+        clearInterval(timer);
+        timer = null;
+        clearInterval(values);
+        for (var i = 0, j = that.mouses.length; i < j; ++i) {
+            that.mouses[i].style.display = 'none';
+        }
+        that.text(that.gameTime[0], 0); 
+        that.text(that.defn[0], "Time's Up");
+        that.text(that.gameStart[0], "New Game");
+        finished = true;
     },
 
     clear: function() {
@@ -232,7 +255,8 @@ MouseGame.prototype = {
         this.totalTime = 60;
         this.text(this.gameTime[0], this.totalTime);
         this.text(this.gameScore[0], this.score); 
-        this.text(this.gameStart[0], "Restart");       
+        this.text(this.gameStart[0], "Stop"); 
+        finished = false;      
 
         this.clear();
         this.setDef();
