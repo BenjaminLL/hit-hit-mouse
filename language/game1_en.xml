@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<game1_language>
+	
+	
+	<!-- button contents -->
+	<title>SIX VALUES</title>
+	<start>New Game</start>
+	<stop>Stop</stop>
+	<score>Score</score>
+	<time>Time</time>
+	<instruction>Instruction</instruction>
+
+	<!-- messages -->
+	<instruction_message>
+		<first_sentence>Test your knowledge and understanding of the core academic integrity values.</first_sentence>
+		<second_sentence>A definition of a value will appear – you must find the correct corresponding value and tap to increase your score, but be aware: tapping an incorrect value will decrease your score.</second_sentence>
+		<last_sentence>See how many points you can accumulate before 60 seconds is up.</last_sentence>
+	</instruction_message>
+	<start_message>Match the definition with a correct value</start_message>
+	<end_message>Time's Up</end_message>
+
+	<!-- Six Values -->
+	<six_values>
+		<honesty>Honesty</honesty>
+		<trust>Trust</trust>
+		<respect>Respect</respect>
+		<responsibility>Responsibility</responsibility>
+		<fairness>Fairness</fairness>
+		<courage>Courage</courage>
+	</six_values>
+
+	<!-- Six Definitions -->
+	<six_definitions>
+		<honestyd>Fairness and starightforwardness of conduct</honestyd>
+		<trustd>Assured reliance on the character, ability, strength, or truth of something</trustd>
+		<respectd>An act of giving particular attention; expressions of high or special regard</respectd>
+		<responsibilityd>Moral, legal, or mental accountability; the quality or state of being responsible</responsibilityd>
+		<fairnessd>Marked by impartiality and honesty: free from self-interest, prejudice, or favoritism</fairnessd>
+		<couraged>Mental or moral strength to venture, persevere, and withstand danger, fear, or difficulty</couraged>
+	</six_definitions>
+	
+</game1_language>

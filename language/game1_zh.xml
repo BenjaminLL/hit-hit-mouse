@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<game1_language>
+	
+	
+	<!-- button contents -->
+	<title>六个价值观</title>
+	<start>开始</start>
+	<stop>结束</stop>
+	<score>分数</score>
+	<time>时间</time>
+	<instruction>游戏规则</instruction>
+
+	<!-- messages -->
+	<instruction_message>
+		<first_sentence>测试对核心学术价值观的理解。</first_sentence>
+		<second_sentence>屏幕上会显示其中一个价值观的定义。 请根据定义选择相对应的价值观。 选择正确加100分，选择错误减50分。</second_sentence>
+		<last_sentence>倒计时60秒，加油！</last_sentence>
+	</instruction_message>
+	<start_message>请选择和定义相对应的价值观</start_message>
+	<end_message>游戏结束</end_message>
+
+	<!-- Six Values -->
+	<six_values>
+		<honesty>诚实</honesty>
+		<trust>信任</trust>
+		<respect>尊重</respect>
+		<responsibility>责任</responsibility>
+		<fairness>公平</fairness>
+		<courage>勇气</courage>
+	</six_values>
+
+	<!-- Six Definitions -->
+	<six_definitions>
+		<honestyd>行为的公平与坦诚；坚持事实</honestyd>
+		<trustd>对某人或某物的性格、能力、力量或真相有非常确信的依赖；可以托付信任的人</trustd>
+		<respectd>给予特别注意的行为；高度或特别关注的表达</respectd>
+		<responsibilityd>道德、法律或心理责任；负责任的质量或状态</responsibilityd>
+		<fairnessd>以公正和诚实为标识：摆脱自私、偏见或偏袒</fairnessd>
+		<couraged>敢于冒险、坚持不懈以及承受危险、恐惧或困难的精神或道德力量</couraged>
+	</six_definitions>
+	
+</game1_language>

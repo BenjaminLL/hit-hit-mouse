@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE-edge">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=yes,user-scalable=no" />
@@ -18,16 +18,18 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h4>SIX VALUES</h4>
+                <h4 id="name">SIX VALUES</h4>
 
                 <div class="game-top">
                     <button type="button" class="btn btn-light btn-sm" id="game-start">New Game</button>
                     <!-- <p><input type="button" value="New Game" id="game-start"><p> -->
-                    <p>Score：<span id="game-score">0</span> Time：<span id="game-time">60</span> <span id="second">s</span></p>
+                    <p><span id="score">Score</span>：<span id="game-score">0</span> 
+                        <span id="time">Time</span>：<span id="game-time">60</span> 
+                        <span id="second">s</span></p>
                     <hr>
                 </div>
 
-                <div class="definition"><p>Match the definition with a correct value<p></div>
+                <div class="definition"><p id="defn">Match the definition with a correct value</p></div>
 
                 <div class="game-content">
                     <ul>
@@ -49,9 +51,9 @@
     <div id="pop_background" ontouchstart="disablePopup()"></div>
 
     <div id="instruction_popup" ontouchstart="disablePopup()">
-        <h5>Instruction</h5>
+        <h5 id="instruction">Instruction</h5>
         <hr>
-        <p>Test your knowledge and understanding of the core academic integrity values. <br><br>A definition of a value will appear – you must find the correct corresponding value and tap to increase your score, but be aware: tapping an incorrect value will decrease your score. <br><br>See how many points you can accumulate before 60 seconds is up.</p>
+        <p id="instruction_message">Test your knowledge and understanding of the core academic integrity values. <br><br>A definition of a value will appear – you must find the correct corresponding value and tap to increase your score, but be aware: tapping an incorrect value will decrease your score. <br><br>See how many points you can accumulate before 60 seconds is up.</p>
     </div>
 
     <script type="text/javascript" src="hit-mouse.js"></script>

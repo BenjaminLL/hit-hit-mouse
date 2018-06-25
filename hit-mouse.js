@@ -1,3 +1,103 @@
+// gloable variables for the game context
+var NAME, START, END, SCORE, TIME, ENDING_MESSAGE, START_MESSAGE, INSTRUCTION;
+var INSTRUCTION_MESSAGES = [];
+var NUM_VALUES = 6;
+
+var sixValues = ["honesty", "trust", "respect", "responsibility", "fairness", "courage"];
+var definitions = ["honestyd", "trustd", "respectd", "responsibilityd", "fairnessd", "couraged"];
+
+
+
+
+// load xml based one the specified language
+function parseXML(){  
+              
+            if (window.XMLHttpRequest) {
+                // code for IE7+, Firefox, Chrome, Opera, Safari
+                xmlhttp = new XMLHttpRequest();
+            } else {
+                // code for IE6, IE5
+                xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+            } 
+            
+            // get the lan attribute
+            var lan = document.getElementsByTagName('html')[0].getAttribute('lang');
+            
+            // load xml
+            if (lan == "en") {
+
+                console.log("English version picked");
+                xmlhttp.open("GET","language/game1_en.xml",false);
+            } else if (lan == "fr") {
+
+                console.log("French version picked");
+                xmlhttp.open("GET","language/game1_fr.xml",false);
+            } else if (lan == "zh") {
+
+                console.log("Chinese version picked");
+                xmlhttp.open("GET","language/game1_zh.xml",false);
+            } else {
+                console.log("no language picked");
+            }
+
+            xmlhttp.send();
+            xmlDoc = xmlhttp.responseXML;
+
+
+            // set Text
+            NAME = xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+            START = xmlDoc.getElementsByTagName("start")[0].childNodes[0].nodeValue;
+            END = xmlDoc.getElementsByTagName("stop")[0].childNodes[0].nodeValue;
+            SCORE = xmlDoc.getElementsByTagName("score")[0].childNodes[0].nodeValue;
+            TIME = xmlDoc.getElementsByTagName("time")[0].childNodes[0].nodeValue;
+            INSTRUCTION = xmlDoc.getElementsByTagName("instruction")[0].childNodes[0].nodeValue;
+            ENDING_MESSAGE = xmlDoc.getElementsByTagName("end_message")[0].childNodes[0].nodeValue;
+            START_MESSAGE = xmlDoc.getElementsByTagName("start_message")[0].childNodes[0].nodeValue;
+
+            var SIX_VALUES = xmlDoc.getElementsByTagName("six_values")[0];
+            for (var i = 0; i < NUM_VALUES; ++i) {
+                sixValues[i] = SIX_VALUES.getElementsByTagName(sixValues[i])[0].childNodes[0].nodeValue;
+            }
+
+            var SIX_DEFINITIONS = xmlDoc.getElementsByTagName("six_definitions")[0];
+            for (var i = 0; i < NUM_VALUES; ++i) {
+                definitions[i] = SIX_DEFINITIONS.getElementsByTagName(definitions[i])[0].childNodes[0].nodeValue;
+            }
+
+            var INSTRUCTION_MESSAGE = xmlDoc.getElementsByTagName("instruction_message")[0];
+            INSTRUCTION_MESSAGES[0] = INSTRUCTION_MESSAGE.getElementsByTagName("first_sentence")[0].childNodes[0].nodeValue;
+            INSTRUCTION_MESSAGES[1] = INSTRUCTION_MESSAGE.getElementsByTagName("second_sentence")[0].childNodes[0].nodeValue;
+            INSTRUCTION_MESSAGES[2] = INSTRUCTION_MESSAGE.getElementsByTagName("last_sentence")[0].childNodes[0].nodeValue;
+
+}
+
+// Set text
+function setText() {
+
+    var inst = document.querySelectorAll("#instruction")[0];
+    var gameName = document.querySelectorAll("#name")[0];
+    var start = document.querySelectorAll("#game-start")[0];
+    var score = document.querySelectorAll("#score")[0];
+    var time = document.querySelectorAll("#time")[0];
+    var sm = document.querySelectorAll("#defn")[0];
+    var instruction_message = document.querySelectorAll("#instruction_message")[0];
+
+    gameName.textContent = NAME;
+    inst.textContent = INSTRUCTION;
+    start.textContent = START;
+    score.textContent = SCORE;
+    time.textContent = TIME;
+    sm.textContent = START_MESSAGE;
+    instruction_message.innerHTML = INSTRUCTION_MESSAGES[0] + "<br><br>" + INSTRUCTION_MESSAGES[1] + "<br><br>" +INSTRUCTION_MESSAGES[2];
+
+}
+
+parseXML();
+setText();
+
+
+
+
 // global variables
 var timer = null;
 var values = null;
@@ -6,13 +106,6 @@ var numBox = 9;
 var included = false;
 var correct = false;
 var finished = true;
-sixValues = ["Honesty", "Trust", "Respect", "Responsibility", "Fairness", "Courage"];
-definitions = ["Fairness and starightforwardness of conduct", 
-                        "Assured reliance on the character, ability, strength, or truth of something",
-                        "An act of giving particular attention; expressions of high or special regard",
-                        "Moral, legal, or mental accountability; the quality or state of being responsible",
-                        "Marked by impartiality and honesty: free from self-interest, prejudice, or favoritism",
-                        "Mental or moral strength to venture, persevere, and withstand danger, fear, or difficulty"];
 
 
 var body = document.getElementsByTagName("BODY")[0];
@@ -213,8 +306,8 @@ MouseGame.prototype = {
                 for (var i = 0, j = that.mouses.length; i < j; ++i) {
                     that.mouses[i].style.display = 'none';
                 }
-                that.text(that.defn[0], "Time's Up");
-                that.text(that.gameStart[0], "New Game");               
+                that.text(that.defn[0], ENDING_MESSAGE);
+                that.text(that.gameStart[0], START);               
 
                 finished = true;
             }
@@ -232,8 +325,8 @@ MouseGame.prototype = {
             that.mouses[i].style.display = 'none';
         }
         that.text(that.gameTime[0], 0); 
-        that.text(that.defn[0], "Time's Up");
-        that.text(that.gameStart[0], "New Game");
+        that.text(that.defn[0], ENDING_MESSAGE);
+        that.text(that.gameStart[0], START);
         finished = true;
     },
 
@@ -249,13 +342,13 @@ MouseGame.prototype = {
         }
     },
 
-    // 开始游戏
+    // start the game
     startGame: function() {
         this.score = 0;
         this.totalTime = 60;
         this.text(this.gameTime[0], this.totalTime);
         this.text(this.gameScore[0], this.score); 
-        this.text(this.gameStart[0], "Stop"); 
+        this.text(this.gameStart[0], END); 
         finished = false;      
 
         this.clear();
