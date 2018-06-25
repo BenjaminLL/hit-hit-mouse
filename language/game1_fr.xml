@@ -3,21 +3,21 @@
 	
 	
 	<!-- button contents -->
-	<title>SIX VALUES</title>
-	<start>New Game</start>
-	<stop>Stop</stop>
+	<title>SIX VALEURS</title>
+	<start>Nouveau Jeu</start>
+	<stop>Arrêtez</stop>
 	<score>Score</score>
-	<time>Time</time>
-	<instruction>Instruction</instruction>
+	<time>Temps</time>
+	<instruction>Instructions</instruction>
 
 	<!-- messages -->
 	<instruction_message>
-		<first_sentence>Test your knowledge and understanding of the core academic integrity values.</first_sentence>
-		<second_sentence>A definition of a value will appear – you must find the correct corresponding value and tap to increase your score, but be aware: tapping an incorrect value will decrease your score.</second_sentence>
-		<last_sentence>See how many points you can accumulate before 60 seconds is up.</last_sentence>
+		<first_sentence>Testez votre connaissance et compréhension des valeurs fondamentales de l’intégrité académique.</first_sentence>
+		<second_sentence>Une définition va apparaître, et puis vous devez trouver la valeur qui corresponde à cette définition. Appuyer pour augmenter votre score. Mais faites attention : si vous appuyez sur une valeur incorrecte, ça va diminuer votre score.</second_sentence>
+		<last_sentence>Voir combien de points vous pouvez accumuler en 60 secondes.</last_sentence>
 	</instruction_message>
-	<start_message>Match the definition with a correct value</start_message>
-	<end_message>Time's Up</end_message>
+	<start_message>Correspondre à la définition la valeur correcte.</start_message>
+	<end_message>Le Temps Est Écoulé</end_message>
 
 	<!-- Six Values -->
 	<six_values>
