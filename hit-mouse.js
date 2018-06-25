@@ -38,6 +38,7 @@ function parseXML(){
                 xmlhttp.open("GET","language/game1_zh.xml",false);
             } else {
                 console.log("no language picked");
+                xmlhttp.open("GET","language/game1_en.xml",false);
             }
 
             xmlhttp.send();
